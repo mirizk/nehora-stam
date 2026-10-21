@@ -7,6 +7,7 @@ import {
   HandHeart,
   Mail,
   MapPin,
+  MessageCircle,
   Phone,
   ScanSearch,
   ShieldCheck,
@@ -25,6 +26,7 @@ const BUSINESS = {
   tagline: 'סת״ם מהודר',
   phone: '0527174076',
   phoneHref: 'tel:+972527174076',
+  waHref: 'https://wa.me/972527174076',
   email: 'nhr60179@gmail.com',
   address: 'רחוב הרב עובדיה יוסף 9, לוד',
   hours: 'א׳–ה׳ 19:00–21:00 · או בתאום',
@@ -111,6 +113,17 @@ function Home() {
       <Trust />
       <Contact />
       <Footer />
+
+      <a
+        href={BUSINESS.waHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="דברו איתנו בוואטסאפ"
+        className="fixed bottom-6 left-6 z-50 flex items-center gap-2 rounded-full bg-emerald-600 px-4 py-3 text-white shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-emerald-500"
+      >
+        <MessageCircle className="size-6 fill-current" />
+        <span className="hidden font-medium text-sm md:inline">שאל אותנו בוואטסאפ</span>
+      </a>
     </div>
   )
 }
