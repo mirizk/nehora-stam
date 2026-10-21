@@ -1,0 +1,48 @@
+@import "tailwindcss" source("../");
+
+@theme {
+  --color-ink: #0f1a2e;
+  --color-ink-soft: #1b2a44;
+  --color-parchment: #f6efe1;
+  --color-parchment-deep: #ebdfc6;
+  --color-gold: #b8913f;
+  --color-gold-light: #d9b968;
+  --font-serif: 'Frank Ruhl Libre', 'David', serif;
+  --font-sans: 'Heebo', system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--color-parchment);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+.grain {
+  background-image: radial-gradient(rgba(15, 26, 46, 0.06) 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+.gold-rule {
+  height: 1px;
+  background: linear-gradient(to left, transparent, var(--color-gold), transparent);
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+.rise { animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.rise-2 { animation-delay: 0.15s; }
+.rise-3 { animation-delay: 0.3s; }
+.rise-4 { animation-delay: 0.45s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rise { animation: none; }
+  html { scroll-behavior: auto; }
+}
