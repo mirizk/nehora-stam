@@ -1,4 +1,4 @@
-# בית הסופר — STAM Judaica landing page
+# נהורא — STAM Judaica landing page
 
 A Hebrew, right-to-left landing page for a STAM (סת״ם) Judaica business that sells Torah scrolls, Tefillin and Mezuzahs and offers a Mezuzah/Tefillin inspection service.
 

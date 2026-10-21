@@ -3,7 +3,7 @@ import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 
 import '../styles.css'
 
-const siteName = 'בית הסופר — ספרי תורה, תפילין ומזוזות'
+const siteName = 'נהורא — ספרי תורה, תפילין ומזוזות'
 const siteDescription =
   'סת״ם מהודר בכתב יד סופר מוסמך: ספרי תורה, תפילין ומזוזות בפיקוח רבני, ושירות בדיקת מזוזות ותפילין עד הבית.'
 

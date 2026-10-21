@@ -21,13 +21,13 @@ export const Route = createFileRoute('/')({
 
 // Placeholder business details — replace with the real ones before launch
 const BUSINESS = {
-  name: 'בית הסופר',
+  name: 'נהורא',
   tagline: 'סת״ם מהודר',
-  phone: '02-500-0000',
-  phoneHref: 'tel:+97225000000',
-  email: 'info@beit-hasofer.co.il',
-  address: 'רחוב מלכי ישראל 1, ירושלים',
-  hours: 'א׳–ה׳ 9:00–19:00 · ו׳ 9:00–13:00',
+  phone: '0527174076',
+  phoneHref: 'tel:+972527174076',
+  email: 'nhr60179@gmail.com',
+  address: 'רחוב הרב עובדיה יוסף 9, לוד',
+  hours: 'א׳–ה׳ 19:00–21:00 · או בתאום',
 }
 
 const img = (name: string, w: number) => `/.netlify/images?url=/img/${name}.png&w=${w}&fm=webp`
