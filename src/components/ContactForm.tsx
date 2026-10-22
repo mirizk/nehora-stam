@@ -4,7 +4,7 @@ import { CheckCircle2, Loader2 } from 'lucide-react'
 type State = 'idle' | 'pending' | 'success' | 'error'
 
 // Web3Forms access key (public by design). Submissions are emailed to the address it was created with.
-const WEB3FORMS_ACCESS_KEY = 'REPLACE_WITH_WEB3FORMS_ACCESS_KEY'
+const WEB3FORMS_ACCESS_KEY = '57e5ae0e-b8ec-4525-971a-60717cfcebbc'
 
 export const SERVICES = ['ספר תורה', 'תפילין', 'מזוזות', 'בדיקת מזוזות ותפילין', 'אחר'] as const
 
