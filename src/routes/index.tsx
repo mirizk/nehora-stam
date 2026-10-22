@@ -126,59 +126,14 @@ function Home() {
   )
 }
 
-function Logo({ light = false }: { light?: boolean }) {
+function Logo() {
   return (
-    <a href="#top" className="flex items-center gap-3">
-      {/* איור מפורט של ספר תורה ונוצה */}
-      <svg
-        className={`h-9 w-auto ${light ? 'text-gold-light' : 'text-gold'}`}
-        viewBox="0 0 64 64"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        {/* עצי חיים (גלגלי ספר התורה) */}
-        <circle cx="12" cy="14" r="3" stroke="currentColor" strokeWidth="2" />
-        <circle cx="12" cy="50" r="3" stroke="currentColor" strokeWidth="2" />
-        <path d="M12 17V47" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-
-        <circle cx="52" cy="14" r="3" stroke="currentColor" strokeWidth="2" />
-        <circle cx="52" cy="50" r="3" stroke="currentColor" strokeWidth="2" />
-        <path d="M52 17V47" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-
-        {/* קלף פתוח */}
-        <path
-          d="M14 20C20 18 26 21 32 21C38 21 44 18 50 20V44C44 42 38 45 32 45C26 45 20 42 14 44V20Z"
-          fill="currentColor"
-          fillOpacity="0.15"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinejoin="round"
-        />
-
-        {/* תפירה/קיפול מרכזי */}
-        <path d="M32 21V45" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 2" />
-
-        {/* נוצת סופר מונחת באלכסון */}
-        <path
-          d="M22 42C28 32 38 20 46 12C44 16 43 22 38 26C35 28.5 30 31 22 42Z"
-          fill="currentColor"
-          fillOpacity="0.4"
-        />
-        <path
-          d="M20 45L48 10"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-        />
-      </svg>
-
-      <span
-        className={`font-serif text-2xl font-bold tracking-wide ${
-          light ? 'text-parchment' : 'text-ink'
-        }`}
-      >
-        {BUSINESS.name}
-      </span>
+    <a href="#top" className="flex items-center">
+      <img
+        src="/img/logo.png" 
+        alt="נהורא - סת״ם"
+        className="h-12 w-auto object-contain"
+      />
     </a>
   )
 }
