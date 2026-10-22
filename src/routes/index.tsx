@@ -432,8 +432,10 @@ function Contact() {
 function Footer() {
   return (
     <footer className="bg-ink text-parchment/60">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 py-10 md:flex-row">
-        <Logo light />
+      {/* Extra bottom padding keeps the floating WhatsApp button off the footer text */}
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 pt-12 pb-28 md:flex-row">
+        {/* Same nudge as the header so the wordmark lines up with the links */}
+        <Logo light className="h-16 md:h-20 md:-translate-y-5" />
         <nav className="flex flex-wrap justify-center gap-6 text-sm">
           {NAV.map((item) => (
             <a key={item.href} href={item.href} className="hover:text-gold-light">
