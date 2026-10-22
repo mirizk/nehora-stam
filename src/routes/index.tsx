@@ -142,8 +142,9 @@ function Logo({ className = 'h-14' }: { light?: boolean; className?: string }) {
 function Header() {
   return (
     <header className="absolute inset-x-0 top-0 z-20">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-        <Logo light className="h-16 md:h-20" />
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 pt-8 pb-5 md:pt-10">
+        {/* Nudged up so the wordmark, not the feather, lines up with the nav */}
+        <Logo light className="h-16 -translate-y-2 md:h-20" />
         <nav className="hidden items-center gap-8 md:flex">
           {NAV.map((item) => (
             <a key={item.href} href={item.href} className="text-sm text-parchment/80 transition hover:text-gold-light">
@@ -177,7 +178,7 @@ function Hero() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-l from-ink via-ink/85 to-ink/20" />
       <div className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-ink to-transparent" />
 
-      <div className="mx-auto w-full max-w-7xl px-6 pt-28 pb-20">
+      <div className="mx-auto w-full max-w-7xl px-6 pt-40 pb-20">
         <div className="max-w-2xl">
           <p className="rise mb-6 inline-flex items-center gap-3 text-sm tracking-[0.2em] text-gold-light">
             <span className="h-px w-10 bg-gold-light" />
