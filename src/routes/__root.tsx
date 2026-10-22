@@ -3,6 +3,7 @@ import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 
 import '../styles.css'
 
+const siteUrl = 'https://nehorastam.co.il'
 const siteName = 'נהורא — ספרי תורה, תפילין ומזוזות'
 const siteDescription =
   'סת״ם מהודר בכתב יד סופר מוסמך: ספרי תורה, תפילין ומזוזות בפיקוח רבני, ושירות בדיקת מזוזות ותפילין עד הבית.'
@@ -36,12 +37,21 @@ export const Route = createRootRoute({
         property: 'og:type',
         content: 'website',
       },
+      { property: 'og:url', content: siteUrl },
+      { property: 'og:site_name', content: 'נהורא' },
+      { property: 'og:locale', content: 'he_IL' },
+      { property: 'og:image', content: `${siteUrl}/og.jpg` },
+      { property: 'og:image:width', content: '1200' },
+      { property: 'og:image:height', content: '630' },
+      { property: 'og:image:alt', content: 'נהורא — ספרי תורה, תפילין ומזוזות' },
       {
         name: 'twitter:card',
         content: 'summary_large_image',
       },
+      { name: 'twitter:image', content: `${siteUrl}/og.jpg` },
     ],
     links: [
+      { rel: 'canonical', href: `${siteUrl}/` },
       { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
       {
