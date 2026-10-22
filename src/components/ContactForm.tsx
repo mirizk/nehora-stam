@@ -3,6 +3,9 @@ import { CheckCircle2, Loader2 } from 'lucide-react'
 
 type State = 'idle' | 'pending' | 'success' | 'error'
 
+// Web3Forms access key (public by design). Submissions are emailed to the address it was created with.
+const WEB3FORMS_ACCESS_KEY = 'REPLACE_WITH_WEB3FORMS_ACCESS_KEY'
+
 export const SERVICES = ['ספר תורה', 'תפילין', 'מזוזות', 'בדיקת מזוזות ותפילין', 'אחר'] as const
 
 const field =
@@ -15,19 +18,31 @@ export function ContactForm() {
     event.preventDefault()
     if (state === 'pending') return
     const form = event.currentTarget
-    const body = new URLSearchParams()
-    new FormData(form).forEach((value, key) => body.append(key, String(value)))
+    const data = Object.fromEntries(new FormData(form)) as Record<string, string>
+    // Honeypot: real visitors never see this field, so a filled value means a bot
+    if (data['bot-field']) {
+      form.reset()
+      setState('success')
+      return
+    }
+    delete data['bot-field']
+    // Drop empty optional fields (e.g. no email) so the form service doesn't reject them
+    for (const key of Object.keys(data)) if (!data[key]?.trim()) delete data[key]
     setState('pending')
     try {
-      const response = await fetch('/contact-form.html', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: body.toString(),
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `פנייה חדשה מהאתר: ${data.service || 'כללי'}`,
+          from_name: 'אתר נהורא',
+          ...data,
+        }),
         signal: AbortSignal.timeout(15000),
       })
-      if (!response.ok) throw new Error('Submission failed')
-      // A plain static server echoes the registration file back instead of processing the form
-      if (/\bdata-netlify\s*=/i.test(await response.text())) throw new Error('Form handling is unavailable')
+      const result = (await response.json().catch(() => null)) as { success?: boolean } | null
+      if (!response.ok || !result?.success) throw new Error('Submission failed')
       form.reset()
       setState('success')
     } catch {
@@ -55,16 +70,11 @@ export function ContactForm() {
   return (
     <form
       name="contact"
-      method="POST"
-      action="/contact-form.html"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
       onSubmit={submit}
       onChange={() => {
         if (state === 'error') setState('idle')
       }}
     >
-      <input type="hidden" name="form-name" value="contact" />
       <p hidden>
         <label>
           נא לא למלא

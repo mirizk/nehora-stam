@@ -31,7 +31,8 @@ const BUSINESS = {
   hours: 'א׳–ה׳ 19:00–21:00 · או בתאום',
 }
 
-const img = (name: string, w: number) => `/.netlify/images?url=/img/${name}.png&w=${w}&fm=webp`
+// Pre-sized WebP files live in public/img as <name>-<width>.webp
+const img = (name: string, w: number) => `/img/${name}-${w}.webp`
 
 const NAV = [
   { href: '#services', label: 'שירותים' },
@@ -166,8 +167,8 @@ function Hero() {
   return (
     <section id="top" className="relative isolate flex min-h-[92vh] items-center bg-ink text-parchment">
       <img
-        src={img('hero', 1920)}
-        srcSet={`${img('hero', 960)} 960w, ${img('hero', 1600)} 1600w, ${img('hero', 2400)} 2400w`}
+        src={img('hero', 1376)}
+        srcSet={`${img('hero', 960)} 960w, ${img('hero', 1376)} 1376w`}
         sizes="100vw"
         alt="ספר תורה פתוח על שולחן עץ, לצד יד כסף ונוצת סופר"
         className="absolute inset-0 -z-10 size-full object-cover object-left"
