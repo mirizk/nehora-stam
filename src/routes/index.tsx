@@ -127,13 +127,13 @@ function Home() {
   )
 }
 
-function Logo() {
+function Logo({ className = 'h-14' }: { light?: boolean; className?: string }) {
   return (
     <a href="#top" className="flex items-center">
       <img
-        src="/img/logo.png" 
+        src="/img/logo.png"
         alt="נהורא - סת״ם"
-        className="h-20 w-auto object-contain"
+        className={`${className} w-auto object-contain`}
       />
     </a>
   )
@@ -143,7 +143,7 @@ function Header() {
   return (
     <header className="absolute inset-x-0 top-0 z-20">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-        <Logo light />
+        <Logo light className="h-16 md:h-20" />
         <nav className="hidden items-center gap-8 md:flex">
           {NAV.map((item) => (
             <a key={item.href} href={item.href} className="text-sm text-parchment/80 transition hover:text-gold-light">
