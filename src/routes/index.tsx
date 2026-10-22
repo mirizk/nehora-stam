@@ -66,7 +66,7 @@ const INSPECTION_STEPS = [
   { title: 'תיאום והגעה', text: 'מתאמים מועד נוח ומגיעים אליכם, או אוספים את המזוזות מהבית.' },
   { title: 'בדיקת מחשב', text: 'סריקה ממוחשבת לאיתור אותיות חסרות, נוספות או מתחלפות.' },
   { title: 'בדיקת סופר מגיה', text: 'כל אות נבחנת בעין מומחה: צורת האות, דיו, סדקים ונגיעות.' },
-  { title: 'תיקון והחזרה', text: 'תיקון כשר במידת האפשר, דוח בדיקה מסודר וקביעה מחדש בברכה.' },
+  { title: 'תיקון והחזרה', text: 'תיקון כשר במידת האפשר והחזרה לקביעה מחדש בברכה.' },
 ]
 
 const BADGES = [
@@ -96,9 +96,41 @@ const TESTIMONIALS = [
   },
 ]
 
+const SITE_URL = 'https://nehorastam.co.il'
+
+// Structured data so search engines understand the business (name, contact, address, hours)
+const STRUCTURED_DATA = {
+  '@context': 'https://schema.org',
+  '@type': 'Store',
+  name: BUSINESS.name,
+  description: 'ספרי תורה, תפילין ומזוזות בכתב יד סופר מוסמך, ושירות בדיקת מזוזות ותפילין.',
+  url: SITE_URL,
+  logo: `${SITE_URL}/img/logo.png`,
+  image: `${SITE_URL}/og.jpg`,
+  telephone: '+972527174076',
+  email: BUSINESS.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'רחוב הרב עובדיה יוסף 9',
+    addressLocality: 'לוד',
+    addressCountry: 'IL',
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+      opens: '19:00',
+      closes: '21:00',
+    },
+  ],
+  areaServed: 'IL',
+  knowsAbout: ['ספרי תורה', 'תפילין', 'מזוזות', 'בדיקת מזוזות', 'בדיקת תפילין', 'סת״ם'],
+}
+
 function Home() {
   return (
     <div className="min-h-screen overflow-x-hidden">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(STRUCTURED_DATA) }} />
       <Header />
       <Hero />
       <TrustStrip />
@@ -336,10 +368,6 @@ function Inspection() {
             loading="lazy"
             className="relative aspect-[4/5] w-full rounded-2xl object-cover shadow-2xl shadow-black/40"
           />
-          <div className="absolute -bottom-6 right-6 max-w-xs rounded-xl bg-parchment p-5 text-ink shadow-xl">
-            <p className="font-serif text-lg font-bold">דוח בדיקה לכל מזוזה</p>
-            <p className="mt-1 text-sm text-ink/70">תדעו בדיוק מה נבדק, מה תוקן ומה מצב כל פריט.</p>
-          </div>
         </div>
       </div>
     </section>
