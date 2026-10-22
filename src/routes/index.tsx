@@ -144,7 +144,7 @@ function Header() {
     <header className="absolute inset-x-0 top-0 z-20">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 pt-8 pb-5 md:pt-10">
         {/* Nudged up so the wordmark, not the feather, lines up with the nav */}
-        <Logo light className="h-16 -translate-y-2 md:h-20" />
+        <Logo light className="h-16 -translate-y-4 md:h-20 md:-translate-y-5" />
         <nav className="hidden items-center gap-8 md:flex">
           {NAV.map((item) => (
             <a key={item.href} href={item.href} className="text-sm text-parchment/80 transition hover:text-gold-light">
